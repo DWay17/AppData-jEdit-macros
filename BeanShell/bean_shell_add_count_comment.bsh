@@ -1,0 +1,26 @@
+// This is a recorded macro. First, check over the
+// commands to make sure this is what you intended. Then,
+// save this buffer, and the macro should appear in the
+// Macros menu.
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+SearchAndReplace.setAutoWrapAround(false);
+SearchAndReplace.setReverseSearch(false);
+
+
+SearchAndReplace.setSearchString("^(.*((deleteDuplicates)|(replaceAll)|(sortLines)).*);$");
+SearchAndReplace.setReplaceString("$1; // execute count XX");
+SearchAndReplace.replaceAll(view);
+
+textArea.goToBufferStart(false);
+
+SearchAndReplace.setSearchString("// execute count XX");
+int i = 0;
+while (SearchAndReplace.find(view)) {
+	i++;
+	SearchAndReplace.setReplaceString("// execute count " + i);
+	SearchAndReplace.replace(view);
+}
