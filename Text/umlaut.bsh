@@ -1,0 +1,39 @@
+
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+
+SearchAndReplace.setAutoWrapAround(false);
+SearchAndReplace.setReverseSearch(false);
+
+SearchAndReplace.setSearchString("Ã¶");
+SearchAndReplace.setReplaceString("ö");
+SearchAndReplace.replaceAll(view); // execute count 1
+SearchAndReplace.setSearchString("Ã¼");
+SearchAndReplace.setReplaceString("ü");
+SearchAndReplace.replaceAll(view); // execute count 2
+SearchAndReplace.setSearchString("ÃŸ");
+SearchAndReplace.setReplaceString("ß");
+SearchAndReplace.replaceAll(view); // execute count 3
+SearchAndReplace.setSearchString("Ã¤");
+SearchAndReplace.setReplaceString("ä");
+SearchAndReplace.replaceAll(view); // execute count 4
+
+SearchAndReplace.setIgnoreCase(false);
+SearchAndReplace.setSearchString("([a-z])SS([a-z])");
+SearchAndReplace.setReplaceString("$1ß$2");
+SearchAndReplace.replaceAll(view); // execute count 6
+
+SearchAndReplace.setSearchString("([A-Za-z])Ü([a-z])");
+SearchAndReplace.setReplaceString("$1ü$2");
+SearchAndReplace.replaceAll(view); // execute count 7
+
+SearchAndReplace.setSearchString("([A-Za-z])Ö([a-z])");
+SearchAndReplace.setReplaceString("$1ö$2");
+SearchAndReplace.replaceAll(view); // execute count 8
+
+SearchAndReplace.setSearchString("([A-Za-z])Ä([a-z])");
+SearchAndReplace.setReplaceString("$1ä$2");
+SearchAndReplace.replaceAll(view); // execute count 9

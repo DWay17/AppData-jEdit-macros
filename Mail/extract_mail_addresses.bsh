@@ -1,0 +1,40 @@
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setAutoWrapAround(false);
+SearchAndReplace.setReverseSearch(false);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+
+SearchAndReplace.setReplaceString("");
+SearchAndReplace.setSearchString("^[^@\\n]+$"); // !
+SearchAndReplace.replaceAll(view); // execute count 1
+TextToolsSorting.deleteDuplicates(view, textArea); // execute count 2
+
+SearchAndReplace.setReplaceString("$2\\t$1\\t$2 $1\\t$3");
+SearchAndReplace.setSearchString(".*\"([\\wöäü]+), ([\\wöäü]+)\"\\s+<(.*@.*)>");
+SearchAndReplace.replaceAll(view); // execute count 3
+
+SearchAndReplace.setSearchString(".*\"([\\wöäü]+) ([\\wöäü]+)\"\\s+<(.*@.*)>");
+SearchAndReplace.setReplaceString("$1\\t$2\\t$1 $2\\t$3");
+SearchAndReplace.replaceAll(view); // execute count 4
+
+SearchAndReplace.setReplaceString("\\t\\t\\t$1");
+SearchAndReplace.setSearchString(".*<(.*@.*)>.*");
+SearchAndReplace.replaceAll(view); // execute count 5
+
+SearchAndReplace.setSearchString("^ +");
+SearchAndReplace.setReplaceString("");
+
+SearchAndReplace.setSearchString("\\s+$");
+SearchAndReplace.replaceAll(view); // execute count 6
+
+SearchAndReplace.setSearchString("mailto:");
+SearchAndReplace.replaceAll(view); // execute count 9
+SearchAndReplace.setSearchString("\\?subject.*");
+SearchAndReplace.replaceAll(view); // execute count 10
+SearchAndReplace.setSearchString(";.*");
+SearchAndReplace.replaceAll(view); // execute count 11
+
+TextToolsSorting.sortLines(textArea,false); // execute count 7
+TextToolsSorting.deleteDuplicates(view, textArea); // execute count 8

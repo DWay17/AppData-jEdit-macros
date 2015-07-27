@@ -1,0 +1,12 @@
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+
+SearchAndReplace.setSearchString("<!--\\s+");
+SearchAndReplace.setReplaceString("<!-- ");
+SearchAndReplace.replaceAll(view); // execute count 1
+SearchAndReplace.setSearchString("\\s+-->");
+SearchAndReplace.setReplaceString(" -->");
+SearchAndReplace.replaceAll(view); // execute count 2

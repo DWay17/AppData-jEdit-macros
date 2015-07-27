@@ -1,0 +1,33 @@
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+SearchAndReplace.setAutoWrapAround(false);
+SearchAndReplace.setReverseSearch(false);
+
+SearchAndReplace.setSearchString("^(To|From): ");
+SearchAndReplace.setReplaceString("");
+SearchAndReplace.replaceAll(view); // execute count 1
+SearchAndReplace.setSearchString("[,>]+");
+SearchAndReplace.setReplaceString("\\n");
+SearchAndReplace.replaceAll(view); // execute count 2
+
+textArea.selectAll();
+textArea.shiftIndentLeft(); // 1
+textArea.shiftIndentLeft(); // 2
+textArea.shiftIndentLeft(); // 3
+
+SearchAndReplace.setSearchString("\\s+<");
+SearchAndReplace.setReplaceString("\\t");
+SearchAndReplace.replaceAll(view); // execute count 3
+SearchAndReplace.setReplaceString(" ");
+SearchAndReplace.setSearchString("[ \\t]*\\n[ \\t]+");
+SearchAndReplace.replaceAll(view); // execute count 7
+SearchAndReplace.setSearchString("^\"([^\"]+)\\n([^\"]+)\"");
+SearchAndReplace.setReplaceString("$1 $2");
+SearchAndReplace.replaceAll(view); // execute count 8
+
+SearchAndReplace.setReplaceString("");
+SearchAndReplace.setSearchString("[\"']+");
+SearchAndReplace.replaceAll(view); // execute count 9

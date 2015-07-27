@@ -1,0 +1,97 @@
+SearchAndReplace.setReplaceString("");
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+
+list = new ArrayList();
+list.add("(BLZ|Kto.-Nr.):?\\s[\\s0-9]+\\s?,?\\s?");
+list.add("Bankverbindungen:");
+list.add("Christian-Albrechts-\\s*Universit(y|ät)\\s+(of|zu|\\s+)?Kiel");
+list.add("Commerzbank\\s+AG");
+list.add("Diese\\s+E-Mail\\s+enthält\\s+vertrauliche\\s+Informationen\\s+und\\s+ist\\s+nur\\s+für\\s+die\\s+Personen\\s+bestimmt,\\s+an\\s+welche\\s+sie\\s+gerichtet\\s+ist\\.");
+//list.add("Fon:\\s+\\+49\\s+\\(0\\)\\s+431\\s+597\\s+4138\\s+\\s+·\\s+\\s+Fax:\\s+\\+49\\s+\\(0\\)\\s+431\\s+597\\s+2196");
+list.add("Förde\\s+Sparkasse");
+list.add("IBAN:?\\s[a-zA-Z]{2}[\\s0-9]+\\s?,?\\s?");
+list.add("Institut\\s+für\\s+Klinische\\s+Molekularbiologie");
+list.add("Institute\\s+of\\s+Clinical\\s+Molecular\\s+Biology");
+list.add("Medical\\s+Faculty\\s+of\\s+the\\s+Christian-Albrechts-University\\s+Kiel");
+//list.add("Mobile:\\s+\\+49\\s+\\(0\\)\\s+179\\s+485\\s+1891\\s+\\s+·\\s+\\s+");
+list.add("Skype:\\s+[\\w_-]+");
+list.add("Niemannsweg\\s+11,\\s+24105\\s+Kiel,\\s+Germany");
+list.add("Niemannsweg\\s+11\\s+\\(Haus\\s+1\\.207\\),\\s+24105\\s+Kiel,\\s+Germany");
+list.add("Rechtsfähige\\s+Anstalt\\s+des\\s+öffentlichen\\s+Rechts");
+list.add("Research\\s+data\\s+management");
+list.add("SWIFT/BIC:?\\s[\\sa-zA-Z0-9]{8,14}\\s?,?\\s?");
+list.add("Schittenhelmstr\\.\\s+12\\s+[.·]?\\s+24105\\s+Kiel(,\\s+Germany)?");
+list.add("Sollten\\s+Sie\\s+nicht\\s+der\\s+bestimmungsgemäße\\s+Empfänger\\s+sein,\\s+bitten\\s+wir\\s+Sie,\\s+uns\\s+hiervon\\s+unverzüglich\\s+zu\\s+unterrichten\\s+und\\s+die\\s+E-Mail\\s+zu\\s+vernichten\\.");
+list.add("Tel:\\s+\\+49\\s+\\(0\\)431\\s+597\\s+8583");
+list.add("University\\s+Hospital\\s+Schleswig[\\s-]*Holstein([\\s+,.·]*Campus\\s+Kiel)?");
+list.add("Universität\\s+zu\\s+Lübeck");
+list.add("Universitätsklinikum\\s+Schleswig[\\s-]*Holstein([\\s.,·]*Campus\\s+Kiel)?");
+list.add("Vorsitzender\\s+des\\s+Aufsichtsrates:\\s+Rolf\\s+Fischer");
+list.add("Vorstandsmitglieder:\\s+Prof\\.\\s+Dr\\.\\s+Jens\\s+Scholz\\s+\\(Vorsitzender\\),\\s+Peter\\s+Pansegrau,\\s+Christa\\s+Meyer");
+list.add("Wir\\s+weisen\\s+darauf\\s+hin,\\s+dass\\s+der\\s+Gebrauch\\s+und\\s+die\\s+Weiterleitung\\s+einer\\s+nicht\\s+bestimmungsgemäß\\s+empfangenen\\s+E-Mail\\s+und\\s+ihres\\s+Inhalts\\s+gesetzlich\\s+verboten\\s+sind\\s+und\\s+ggf.\\s+Schadensersatzansprüche\\s+auslösen\\s+können\\.");
+list.add("Zentrale\\s+Einrichtung\\s+Forschungsdatenmanagement\\s+der\\s+Medizinischen\\s+Fakultät\\s+der\\s+CAU\\s+zu\\s+Kiel\\s+Universitätsklinikum\\s+Schleswig-Holstein,\\s+Campus\\s+Kiel");
+list.add("\\[http://www\\.uksh\\.de/skin/uksh/tpl/infoportal/img/uk-sh_logo\\.gif\\]");
+list.add(">?^e?mail:?\\s*[\\w.\\d-]+@[\\w.\\d-]+(\\.[\\w.\\d-]+)+");
+list.add(">?[\\w.\\d-]+@[\\w.\\d-]+(\\.[\\w.\\d-]+)+");
+list.add("a\\.franke@mucosa\\.de<mailto:a\\.franke@mucosa\\.de>");
+list.add("a\\.franke@mucosa\\.de<mailto:a\\.franke@mucosa\\.de><mailto:a\\.franke@mucosa\\.de>");
+list.add("admin2@ikmb.uni-kiel.de<mailto:a.ruether@mucosa.de>");
+list.add("www.ikmb.uni-kiel.de<http://www.ikmb.uni-kiel.de/>");
+list.add("www\\.ikmb\\.uni-kiel\\.de(<http://www\\.ikmb\\.uni-kiel\\.de/>)?");
+list.add("www\\.ikmb\\.uni<http://www\\.ikmb\\.uni>-kiel\\.de<http://kiel\\.de><http://www\\.ikmb\\.uni-kiel\\.de/>");
+list.add("Am\\sBotanischen\\sGarten\\s11[\\s+,.·]*\\s24118\\sKiel,\\sGermany");
+list.add("(Mobile|tel|fon|fax):?\\s*[0-9+/ ()-]+");
+list.add("^\\s*(und|der|Director| ?)+\\s*$");
+list.add("Assistenz der Geschäftsführung");
+list.add("UKSH Gesellschaft für IT Services mbH (ITSG)");
+list.add("Campus Lübeck");
+list.add("Ratzeburger Allee 160 | 23538 Lübeck");
+list.add("Tel.: 0451 500-14110");
+list.add("Besucheranschrift");
+list.add("Maria-Goeppert-Straße 7 | MFC IV | 23562 Lübeck");
+list.add("Mobil: 0174 399 6257");
+list.add("www.uksh.de");
+list.add("Univ.-Prof. Dr. Ulrich Sax");
+list.add("Institut für Medizinische Informatik");
+list.add("Leiter AG Infrastruktur für Translationale Forschung");
+list.add("UNIVERSITÄTSMEDIZIN GÖTTINGEN");
+list.add("GEORG-AUGUST-UNIVERSITÄT");
+list.add("Von-Siebold-Strasse 3");
+list.add("D-37075 Goettingen");
+list.add("Germany");
+list.add("(phone|tel\\.?):?\\s+[+0-9 -]+");
+list.add("Christian-Albrechts-Universität zu Kiel");
+list.add("UKSH Gesellschaft für IT Services mbH \(ITSG\)");
+list.add("Medical Faculty");
+// list.add(" ### ");
+
+// ####
+list.add("^ *( *((und)|(der)|(die)|(das)|(des)|(of)|(the)) *)+ *$");
+list.add("^[ \\t.·,|…]+$");
+list.add("^\\*+$");
+// ###
+for (String string : list) {
+	SearchAndReplace.setSearchString(string);
+	SearchAndReplace.replaceAll(view);
+}
+SearchAndReplace.setReplaceString(">");
+SearchAndReplace.setSearchString("^> +$");
+SearchAndReplace.replaceAll(view);
+SearchAndReplace.setSearchString("^>[ \\t.·]+$");
+SearchAndReplace.replaceAll(view);
+SearchAndReplace.setSearchString("^> \\*+$");
+SearchAndReplace.replaceAll(view);
+SearchAndReplace.setSearchString("^>\\s*(und|der|Director| ?)+\\s*$");
+SearchAndReplace.replaceAll(view);
+
+SearchAndReplace.setSearchString("\\n{3,}");
+SearchAndReplace.setReplaceString("\\n\\n");
+SearchAndReplace.replaceAll(view);
+
+SearchAndReplace.setSearchString("(^>\\n){3,}");
+SearchAndReplace.setReplaceString(">\\n>\\n");
+SearchAndReplace.replaceAll(view);

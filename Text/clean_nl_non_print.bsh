@@ -1,0 +1,24 @@
+// This is a recorded macro. First, check over the
+// commands to make sure this is what you intended. Then,
+// save this buffer, and the macro should appear in the
+// Macros menu.
+jEdit.newFile(view);
+EditBus.send(new PositionChanging(editPane));
+Registers.paste(textArea,'$',false);
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setWholeWord(false);
+SearchAndReplace.setIgnoreCase(true);
+SearchAndReplace.setRegexp(true);
+SearchAndReplace.setSearchFileSet(new CurrentBufferSet());
+
+SearchAndReplace.setSearchString("\\s+");
+SearchAndReplace.setReplaceString(" ");
+SearchAndReplace.replaceAll(view);
+
+SearchAndReplace.setReplaceString("");
+SearchAndReplace.setSearchString("[\"'„“]");
+SearchAndReplace.replaceAll(view);
+
+textArea.selectAll();
+Registers.copy(textArea,'$');
+// jEdit.closeBuffer(editPane,buffer);
